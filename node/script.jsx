@@ -1,0 +1,10 @@
+app.consoleout("start"); 
+var file = new File("test1.txt"); 
+file.open("w"); 
+file.write("did this change made in script work?"); 
+file.close(); 
+var file = new File("test2.txt"); 
+file.open("w"); 
+file.write(app.scriptArgs.getValue("text")); 
+file.close(); 
+app.consoleout("done");
