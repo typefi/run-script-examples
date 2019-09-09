@@ -50,19 +50,19 @@ var response = await axios.post(url, data, {auth: auth});
 ### Response
 ```json
 {
-    "_id": "5d71b313eef1c01dcb997s1e",
-    "status": "queued",    
-    "created": "2019-09-06T01:15:00.007Z",
-    "script": "...",
-    "inputs": [
-        ...
-    ],
-    "outputs": [
-        ...
-    ],
-    "args": [
-        ...
-    ],    
+  "_id": "5d71b313eef1c01dcb997s1e",
+  "status": "queued",    
+  "created": "2019-09-06T01:15:00.007Z",
+  "script": "...",
+  "inputs": [
+    ...
+  ],
+  "outputs": [
+    ...
+  ],
+  "args": [
+    ...
+  ],    
 }
 ```
 
@@ -88,28 +88,55 @@ var response = await axios.get(url, {auth: auth});
 ### Response
 ```json
 {
-    "_id": "5d71b313eef1c01dcb997s1e",
-    "status": "complete",    
-    "created": "2019-09-09T00:09:30.489Z",
-    "completed": "2019-09-09T00:09:33.929Z",
-    "result": "success",
-    "runTime": 2862,
-    "script": "...",
-    "inputs": [
-        ...
-    ],
-    "outputs": [
-        ...
-    ],
-    "args": [
-        ...
-    ],    
+  "_id": "5d71b313eef1c01dcb997s1e",
+  "status": "complete",    
+  "created": "2019-09-09T00:09:30.489Z",
+  "completed": "2019-09-09T00:09:33.929Z",
+  "result": "success",
+  "runTime": 2862,
+  "script": "...",
+  "inputs": [
+    ...
+  ],
+  "outputs": [
+    ...
+  ],
+  "args": [
+    ...
+  ],    
 }
 ```
 
 # File inputs & outputs
 You need to list the files that will be `inputs` from S3 to the InDesignContainer and also the files that will be `outputs` from the InDesignContainer to S3.  This is done using a [S3 Presigned URL](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-presigned-urls.html).
 
+```javascript
+var AWS = require("aws-sdk");
+var s3region = 'example-region-1';
+var s3accessKeyId = 'EXAMPLE_ACCESS_KEY';
+var s3secretAccessKey = 'EXAMPLE_SECRET_ACCESS_KEY';
+var s3bucket = 'example-bucket';
+
+var s3 = new AWS.S3({ region: s3region, accessKeyId: s3accessKeyId, secretAccessKey: s3secretAccessKey});
+
+// Create an input file 
+var inputFile1 = {};
+inputFile1.href = await s3.getSignedUrl('getObject', {Bucket: s3bucket, Key: 'folder/example.txt'}); // must match existing file on s3
+inputFile1.path = 'jobFolder/test.txt';
+
+// Create an input file
+var outputFile1 = {};
+outputFile1.href = await s3.getSignedUrl('putObject', {Bucket: s3bucket, Key: 'folder/example.txt', ContentType: 'application/octet-stream'}); // ContentType must be application/octet-stream  
+outputFile1.path = 'test1.txt';
+
+var inputs = [
+  inputFile1
+];
+
+var outputs = [
+  outputFile1
+];
+```
 
 
 
@@ -118,25 +145,25 @@ Run Script passes arguments to InDesign Servers `scriptArgs` which can be access
 ### Request body
 ```json
 {
-    "args": [
-        {
-            "name": "foo",
-            "value": "bar"
-        },
-        {
-            "name": "count",
-            "value": 123
-        }
-    ]
+  "args": [
+    {
+      "name": "foo",
+      "value": "bar"
+    },
+    {
+      "name": "count",
+      "value": 123
+    }
+  ]
 }
 ```
 
 ### Script
 ```javascript
 if(app.scriptArgs.isDefined("foo") == true){
-    var foo = app.scriptArgs.getValue("foo"); // returns "bar"
+  var foo = app.scriptArgs.getValue("foo"); // returns "bar"
 }
 if(app.scriptArgs.isDefined("count") == true){
-    var count = app.scriptArgs.getValue("count"); // returns "123"
+  var count = app.scriptArgs.getValue("count"); // returns "123"
 }
 ```
