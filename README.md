@@ -71,8 +71,8 @@ You can manually poll a job to check its status using a **GET** API call with th
 
 | Key  | Type           | Description  |
 | ------------- |----------------|--------------|
-| status      | string | current status: queued, inProgress, complete, failed or canceled
-| result      | string | completed result: success, canceled or failed
+| status      | string | current status: `queued`, `inProgress`, `complete`, `failed` or `canceled`
+| result      | string | completed result: `success`, `canceled` or `failed`
 | completed      | date | when the job completed
 | runTime      | integer | time the job ran for in milliseconds
 ### Request example
@@ -122,12 +122,12 @@ var s3 = new AWS.S3({ region: s3region, accessKeyId: s3accessKeyId, secretAccess
 // Create an input file 
 var inputFile1 = {};
 inputFile1.href = await s3.getSignedUrl('getObject', {Bucket: s3bucket, Key: 'folder/example.txt'}); // must match existing file on s3
-inputFile1.path = 'jobFolder/test.txt';
+inputFile1.path = 'jobFolder/example.txt';
 
-// Create an input file
+// Create an out file
 var outputFile1 = {};
 outputFile1.href = await s3.getSignedUrl('putObject', {Bucket: s3bucket, Key: 'folder/example.txt', ContentType: 'application/octet-stream'}); // ContentType must be application/octet-stream  
-outputFile1.path = 'test1.txt';
+outputFile1.path = 'jobFolder/example.txt';
 
 var inputs = [
   inputFile1
@@ -138,7 +138,11 @@ var outputs = [
 ];
 ```
 
-
+### Script example
+```javascript
+var currentPath = Folder.current; // The root path usually "c:/"
+File example = new File('jobFolder/example.txt'); // File path is relative
+```
 
 # Script arguments
 Run Script passes arguments to InDesign Servers `scriptArgs` which can be accessed from your scripts.  *All values are type string
@@ -158,7 +162,7 @@ Run Script passes arguments to InDesign Servers `scriptArgs` which can be access
 }
 ```
 
-### Script
+### Script example
 ```javascript
 if(app.scriptArgs.isDefined("foo") == true){
   var foo = app.scriptArgs.getValue("foo"); // returns "bar"
