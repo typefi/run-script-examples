@@ -3,12 +3,12 @@ Scripts can be run with a **POST** API call using your Run Script API `Key` and 
 
 ### Request paramaters
 | Key  | Type           | Description  |
-| ------------- |----------------|--------------|
+| :-------------: |:----------------:|--------------|
 | async      | boolean | false will wait for the script to complete before request finishes |
 
 ### Request body
 | Key  | Type           | Description  |
-| ------------- |----------------|--------------|
+| :-------------: |:----------------:|--------------|
 | inputs      | array of file objects | {`href`: [S3 Presigned getObject URL](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-presigned-urls.html), `path`: local path to store file} |
 | outputs      | array of file objects | {`href`: [S3 Presigned putObject URL](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-presigned-urls.html), `path`: local path to store file} |
 | args      | array of arg objects | {`name`: string, `value`: string} |
@@ -113,7 +113,7 @@ You need to list the files that will be `inputs` from S3 to the InDesignContaine
 
 
 
-# Script argumentss
+# Script arguments
 Run Script passes arguments to InDesign Servers `scriptArgs` which can be accessed from your scripts.  *All values are type string
 ### Request body
 ```json
