@@ -8,9 +8,10 @@ var s3secretAccessKey = ''; //TODO:
 var s3bucket = ''; //TODO:
 var runscriptKey = ''; //TODO:
 var runscriptSecret = ''; //TODO:
-var s3KeyIndd = 'demo/certificate.indd'; //TODO:
-var s3KeyJpeg = 'demo/dick jones.jpeg'; //TODO:
-var s3KeyPdf = 'demo/certificate.pdf'; // TODO: This is the output file (doesn't have to exist yet)
+var s3Folder = 'demo'; //TODO:
+var s3KeyIndd = s3Folder + '/certificate.indd';
+var s3KeyJpeg = s3Folder + '/dick jones.jpeg';
+var s3KeyPdf = s3Folder + '/certificate.pdf';
 
 
 var s3 = new AWS.S3({ region: s3region, accessKeyId: s3accessKeyId, secretAccessKey: s3secretAccessKey});
