@@ -1,4 +1,28 @@
-# Supported fonts
+# Including fonts
+InDesign Server will look for any missing fonts in a subfolder called `Document Fonts`.  To include fonts in a job just add them as an `input` to you job body.
+```json
+{
+  "inputs": [
+    {
+      "href": "https://example.s3.us-east-1.amazonaws.com.....", 
+      "path": "certificate.indd"
+    },
+    {
+      "href": "https://example.s3.us-east-1.amazonaws.com.....", 
+      "path": "Document Fonts/custom font.otf"
+    }
+  ],
+  "outputs": [
+    {
+      "href": "https://example.s3.us-east-1.amazonaws.com.....", 
+      "path": "output.pdf",
+    }
+  ], 
+  "script": ...
+}
+```
+
+# Default fonts
 | Font | Styles |
 | :--- | :--- |
 |8514oem|Regular|
