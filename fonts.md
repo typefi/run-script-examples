@@ -21,7 +21,7 @@
 |Gadugi|Regular; Bold|
 |Georgia|Regular; Bold; Bold Italic; Italic|
 |HoloLens MDL2 Assets|Regular|
-|Impact|Regular|
+|Impact|Regular| s
 |Ink Free|Regular|
 |Javanese Text|Regular|
 |Leelawadee UI|Regular; Semilight; Bold|
@@ -64,7 +64,7 @@
 |Segoe UI Symbol|Regular|
 |SimSun|Regular|
 |SimSun-ExtB|Regular|
-|Sitka Banner|Regular; Bold; Bold Italic; Italic|
+|Sitka Banner|Regular; Bold; Bold Italic; Italic| 
 |Sitka Display|Regular; Bold; Bold Italic; Italic|
 |Sitka Heading|Regular; Bold; Bold Italic; Italic|
 |Sitka Small|Regular; Bold; Bold Italic; Italic|
