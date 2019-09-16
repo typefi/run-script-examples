@@ -1,5 +1,5 @@
 # Including fonts
-InDesign Server will look for any missing fonts in a subfolder called `Document Fonts`.  To include fonts in a job just add them as an `input` to you job body.
+InDesign® Server will look for any missing fonts in a subfolder called `Document Fonts`.  To include fonts in a job just add them as an `input` to you job body.
 ```json
 {
   "inputs": [
