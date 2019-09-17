@@ -171,3 +171,35 @@ if(app.scriptArgs.isDefined("count") == true){
   var count = app.scriptArgs.getValue("count"); // returns "123"
 }
 ```
+
+# Webhook
+Instead of polling RunScript with `GET` calls to track job status you can use a webhook.  A webhook is a url that recieves a `POST` with the job object every time the job status changes.  The webhook could also be used to notify extenal applications like Slack or GitHub. 
+### Request body
+```json
+{
+  "inputs": [
+    ...
+  ],
+  "outputs": [
+    ...
+  ],
+  "script": "...",
+  "webhook": "https://hooks.zapier.com/hooks/catch/24234234/example/"
+}
+```
+### Response body
+```json
+{
+  "_id": "5d71b313eef1c01dcb997s1e",
+  "status": "inProgress",    
+  "created": "2019-09-09T00:09:30.489Z",
+  "script": "...",
+  "inputs": [
+    ...
+  ],
+  "outputs": [
+    ...
+  ],
+  "webhook": "https://hooks.zapier.com/hooks/catch/24234234/example/"
+}
+```
