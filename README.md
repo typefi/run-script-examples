@@ -1,11 +1,6 @@
 # Run a script
 Scripts can be run with a **POST** API call using your Run Script API `Key` and `Secret` to authenticate. Use the body of the POST to control input & output files and script arguments.
 
-### Request paramaters
-| Key  | Type           | Description  |
-| :-------------: |:----------------:|--------------|
-| async      | boolean | false will wait for the script to complete before request finishes |
-
 ### Request body
 | Key  | Type           | Description  |
 | :-------------: |:----------------:|--------------|
