@@ -9,6 +9,7 @@ Scripts can be run with a **POST** API call using your Run Script API `Key` and 
 | args      | array of arg objects | {`name`: string, `value`: string} |
 | script      | string | InDesign script |
 | webhook      | url | url receives a POST with job data every time a job changes status |
+| errorOnTransferFail      | boolean | Throw error when uploads/downloads fail |
 
 ### Request example
 ```javascript
