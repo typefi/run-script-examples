@@ -10,8 +10,9 @@ Scripts can be run with a **POST** API call using your Run Script API `Key` and 
 | script      | string | InDesign script |
 | webhook      | url | url receives a POST with job data every time a job changes status |
 | errorOnTransferFail      | boolean | Throw error when uploads/downloads fail |
+| ids      | string | Optional parameter to slect Indesign instance. Only available on api/v2 |
 
-### Request example
+### Request example api/v1
 ```javascript
 var axios = require('axios');
 var data = {
@@ -40,6 +41,39 @@ var runscriptApiKey = '5d6c6298de22d$$83f5180f4'; // Your API key
 var runscriptApiSecret = '2b108tRnVwK2VDG8qJGpLZWRredLmL2dljBaywkOIlPR2YmO9QWq1DwRy'; // Your API Secret
 var auth = {username: runscriptApiKey, password: runscriptApiSecret};
 var url = 'https://runscript.typefi.com/api/v1/job'
+var response = await axios.post(url, data, {auth: auth});
+```
+
+### Request example api/v2
+```javascript
+var axios = require('axios');
+var data = {
+  "inputs": [
+    {
+      "href": "https://example.s3.us-east-1.amazonaws.com.....", // S3 Presigned getObject URL 
+      "path": "jobFolder/input.indd" // Path to store file
+    }
+	],
+  "outputs": [
+    {
+      "href": "https://example.s3.us-east-1.amazonaws.com....." // S3 Presigned putObject URL 
+      "path": "jobFolder/output.pdf", // Path to store file			
+    }
+  ],
+  "args": [
+    {
+      "name": "count",
+      "value": "100"
+    }
+  ],
+  "script": "app.consoleout('test');",
+  "ids":"2024"
+};
+
+var runscriptApiKey = '5d6c6298de22d$$83f5180f4'; // Your API key
+var runscriptApiSecret = '2b108tRnVwK2VDG8qJGpLZWRredLmL2dljBaywkOIlPR2YmO9QWq1DwRy'; // Your API Secret
+var auth = {username: runscriptApiKey, password: runscriptApiSecret};
+var url = 'https://runscript.typefi.com/api/v2/job'
 var response = await axios.post(url, data, {auth: auth});
 ```
 
