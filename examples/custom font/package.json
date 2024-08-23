@@ -9,9 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.522.0",
-    "axios": "^0.19.0",
-    "dotenv": "^16.0.2",
-    "fs-extra": "^8.1.0"
+    "aws-sdk": "^2.1681.0",
+    "axios": "^1.7.4",
+    "dotenv": "^16.4.5",
+    "fs-extra": "^11.2.0"
   }
 }
