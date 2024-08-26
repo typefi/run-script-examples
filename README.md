@@ -1,6 +1,8 @@
 # Run a script
 Scripts can be run with a **POST** API call using your Run Script API `Key` and `Secret` to authenticate. Use the body of the POST to control input & output files and script arguments.
 
+To better support job dispatching requirements and provide enhanced features, we are introducing a new version of the Job API. Please refer to new API version, `/api/v2/job` [introduction](examples/api/v2/Job_API_v2_Introduction.md) for more info.
+
 ### Request body
 | Key  | Type           | Description  |
 | :-------------: |:----------------:|--------------|
