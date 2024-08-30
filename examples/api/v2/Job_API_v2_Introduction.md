@@ -11,15 +11,15 @@ To better support job dispatching requirements and provide enhanced features, we
 - **v1:** `/api/v1/job`
 - **v2:** `/api/v2/job`
 
-### Mandatory Parameters
+### New Parameters
 
 - **v1:** The v1 API does not include a parameter for specifying the IDS version.
-- **v2:** The v2 API introduces a new mandatory parameter, `ids`, which specifies the IDS version to target. The parameter must be included in the request. Example: `/api/v2/job?async=true&ids=2024`.
+- **v2:** The v2 API introduces a new optional parameter, `ids`, which specifies the IDS version to target. The parameter can be included in the request. Example: `/api/v2/job?async=true&ids=2024`.
 
 ### Purpose of the `ids` Parameter
 
 - **v1:** Job dispatching is handled without specific version targeting. The API determines which queue to use based on internal logic.
-- **v2:** The `ids` parameter maps to a specific blinkenlights queue name according to a defined scheme (e.g., `run-script-2024`). This allows for more granular control over job dispatching by explicitly targeting queues associated with particular IDS versions. If the specified queue does not exist, the API will respond with an "invalid id parameter" error.
+- **v2:** The `ids` parameter maps to a specific blinkenlights queue name according to a defined scheme (e.g., `run-script-2024`). This allows for more granular control over job dispatching by explicitly targeting queues associated with particular IDS versions. If the specified queue does not exist, the API will respond with an "invalid ids parameter" error. If the `ids` parameter is not specified it will use the latest IDS version.
 
 ### Deprecation and Transition
 
