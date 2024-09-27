@@ -107,7 +107,39 @@ You can manually poll a job to check its status using a **GET** API call with th
 | result      | string | completed result: `success`, `canceled` or `failed`
 | completed      | date | when the job completed
 | runTime      | integer | time the job ran for in milliseconds
-### Request example
+### Request example api/v1
+```javascript
+var runscriptApiKey = '5d6c6298de22d$$83f5180f4'; // Your API key
+var runscriptApiSecret = '2b108tRnVwK2VDG8qJGpLZWRredLmL2dljBaywkOIlPR2YmO9QWq1DwRy'; // Your API Secret
+var jobId = '5d71b313eef1c01dcb997s1e';
+var auth = {username: runscriptApiKey, password: runscriptApiSecret};
+var url = 'https://runscript.typefi.com/api/v1/job/' + jobId;
+var response = await axios.get(url, {auth: auth});
+```
+
+### Response
+```json
+{
+  "_id": "5d71b313eef1c01dcb997s1e",
+  "status": "complete",    
+  "created": "2019-09-09T00:09:30.489Z",
+  "completed": "2019-09-09T00:09:33.929Z",
+  "result": "success",
+  "runTime": 2862,
+  "script": "...",
+  "inputs": [
+    ...
+  ],
+  "outputs": [
+    ...
+  ],
+  "args": [
+    ...
+  ],    
+}
+```
+
+### Request example api/v2
 ```javascript
 var runscriptApiKey = '5d6c6298de22d$$83f5180f4'; // Your API key
 var runscriptApiSecret = '2b108tRnVwK2VDG8qJGpLZWRredLmL2dljBaywkOIlPR2YmO9QWq1DwRy'; // Your API Secret
