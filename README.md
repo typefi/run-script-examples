@@ -145,7 +145,7 @@ var runscriptApiKey = '5d6c6298de22d$$83f5180f4'; // Your API key
 var runscriptApiSecret = '2b108tRnVwK2VDG8qJGpLZWRredLmL2dljBaywkOIlPR2YmO9QWq1DwRy'; // Your API Secret
 var jobId = '5d71b313eef1c01dcb997s1e';
 var auth = {username: runscriptApiKey, password: runscriptApiSecret};
-var url = 'https://runscript.typefi.com/api/v1/job/' + jobId;
+var url = 'https://runscript.typefi.com/api/v2/job/' + jobId;
 var response = await axios.get(url, {auth: auth});
 ```
 
